@@ -75,7 +75,7 @@ def model_path(model_name):
     md_low,md_mid,md_high = model_name
 
     # common path
-    trained_path = 'app/trained-model/'
+    trained_path = 'zappa-app/app/trained-model/'
     # model paths
     low_md_path = os.path.join(trained_path,md_low)
     md_mid_path = os.path.join(trained_path,md_mid)
