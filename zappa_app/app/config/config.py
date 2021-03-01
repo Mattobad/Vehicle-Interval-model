@@ -1,11 +1,11 @@
 import os
-# from pathlib import Path
+from pathlib import Path
 
 
 # root package
-# PACKAGE_ROOT =Path('ml-api').resolve().parent
+PACKAGE_ROOT =Path('app').resolve()
 
-# TRAINED_MODEL_DIR = PACKAGE_ROOT / "trained-models"
+TRAINED_MODEL_DIR = PACKAGE_ROOT / "trained-model"
 
 
 # target label
@@ -19,9 +19,9 @@ TRAINED_UP_MODEL = 'up-quantil-model_14_Impfeat.pkl'
 # common path
 TRAINED_PATH = 'zappa-app/app/trained-model/'
 # model path
-LOW_MODEL_PATH = os.path.join(TRAINED_PATH,TRAINED_LOW_MODEL)
-MID_MODEL_PATH = os.path.join(TRAINED_PATH,TRAINED_MID_MODEL)
-UP_MODEL_PATH = os.path.join(TRAINED_PATH,TRAINED_UP_MODEL)
+LOW_MODEL_PATH = os.path.join(TRAINED_MODEL_DIR,TRAINED_LOW_MODEL)
+MID_MODEL_PATH = os.path.join(TRAINED_MODEL_DIR,TRAINED_MID_MODEL)
+UP_MODEL_PATH = os.path.join(TRAINED_MODEL_DIR,TRAINED_UP_MODEL)
 
 # input variables
 INPUT_FEATURES =['year','cylinders','odometer',

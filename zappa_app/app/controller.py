@@ -1,16 +1,17 @@
 from flask import Blueprint, jsonify, request
-
-from app.config import config
-import os
-import pandas as pd
-import sys
-
 from flask_cors import CORS
 
-from app.inference import model_prediction
+import pandas as pd
+
+import os
+import sys
 import json
 import logging
 import time
+
+from app.inference import model_prediction
+from app.config import config
+
 
 
 # set app log
