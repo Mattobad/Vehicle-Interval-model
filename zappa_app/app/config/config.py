@@ -16,8 +16,6 @@ TRAINED_LOW_MODEL = 'low-quantil-model_14_Impfeat.pkl'
 TRAINED_MID_MODEL = 'mid-quantil-model_14_Impfeat.pkl'
 TRAINED_UP_MODEL = 'up-quantil-model_14_Impfeat.pkl'
 
-# common path
-TRAINED_PATH = 'zappa-app/app/trained-model/'
 # model path
 LOW_MODEL_PATH = os.path.join(TRAINED_MODEL_DIR,TRAINED_LOW_MODEL)
 MID_MODEL_PATH = os.path.join(TRAINED_MODEL_DIR,TRAINED_MID_MODEL)

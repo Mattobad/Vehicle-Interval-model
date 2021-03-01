@@ -1,5 +1,5 @@
 from flask import Flask
-from app.controller import prediction_app
+from zappa_app.app.controller import prediction_app
 
 
 # factory functions
