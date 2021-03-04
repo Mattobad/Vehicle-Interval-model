@@ -46,6 +46,7 @@ jobs:
     - name: Deploy to AWS 
       if: github.ref == 'refs/heads/development' && job.status == 'success'
       run: |
+        cd zappa_app
         pwd
         ls
         pymake dev
