@@ -5,5 +5,5 @@ test:
     python -m pytest
 
 dev:
-    zappa update dev
+    zappa deploy dev
     
