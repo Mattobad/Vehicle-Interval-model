@@ -43,6 +43,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
+    - name: Deploy to AWS 
       if: github.ref == 'refs/heads/development' && job.status == 'success'
       run: |
-        zappa update dev
+        pymake dev
