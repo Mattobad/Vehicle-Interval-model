@@ -1,14 +1,14 @@
 {
     "dev": {
-        "app_function": "app.app",
+        "app_function": "run.app",
         "aws_region": "us-east-1",
         "profile_name": "default",
-        "project_name": "zappa-app",
-        "runtime": "python3.7",
+        "project_name": "zappa_app_dev",
+        "runtime": "python3.8",
         "keep_warm": false,
         "memory_size":512,
         "slim_handler": true,
         "timeout_seconds":600,
-        "s3_bucket": "zappa-dajw7uccf"
+        "s3_bucket": "zappa-app-dev"
     }
 }

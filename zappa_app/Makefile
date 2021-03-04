@@ -3,3 +3,4 @@ PY=python -m py_compile
     test
 test:
     python -m pytest
+    
