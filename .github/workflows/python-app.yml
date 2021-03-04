@@ -48,5 +48,4 @@ jobs:
       run: |
         pwd
         ls
-        cd zappa_app
         pymake dev
