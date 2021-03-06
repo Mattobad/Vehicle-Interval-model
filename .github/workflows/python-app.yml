@@ -46,7 +46,12 @@ jobs:
     - name: Deploy to AWS 
       if: github.ref == 'refs/heads/development' && job.status == 'success'
       run: |
-        cd zappa_app
+        pip install virtualenv
+        virtualenv ml-app
+        source ml-app/bin/activate
         pwd
         ls
-        pymake dev
+        cd zappa_app
+        ls
+        pip install -r requirements.txt zappa==0.52.0
+        zappa deploy dev
