@@ -48,16 +48,19 @@ jobs:
         pip install -r requirements.txt zappa==0.52.0
     - name: Clean Old Deployment
       run: |
+        source ml-app/bin/activate
         cd zappa_app
         zappa undeploy dev
     - name: Deploy to AWS dev
       if: github.ref == 'refs/heads/development' && job.status == 'success'
       run: |
+        source ml-app/bin/activate
         cd zappa_app
         zappa deploy dev
     - name: Tear Down Zappa on Failure
       if: ${{ failure() }}
       run: |
+        source ml-app/bin/activate
         cd zappa_app
         zappa undeploy dev
 #      env:
