@@ -52,7 +52,8 @@ jobs:
         cd zappa_app
         zappa undeploy dev --yes
     - name: Deploy to AWS dev
-      if: github.ref == 'refs/heads/development' && job.status == 'success'
+      if: ${{ always() }}
+#      if: github.ref == 'refs/heads/development' && job.status == 'success'
       run: |
         source ml-app/bin/activate
         cd zappa_app
