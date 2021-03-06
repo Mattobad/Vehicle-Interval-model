@@ -50,19 +50,19 @@ jobs:
       run: |
         source ml-app/bin/activate
         cd zappa_app
-        zappa undeploy dev
+        zappa undeploy dev --yes
     - name: Deploy to AWS dev
       if: github.ref == 'refs/heads/development' && job.status == 'success'
       run: |
         source ml-app/bin/activate
         cd zappa_app
-        zappa deploy dev
+        zappa deploy dev --yes
     - name: Tear Down Zappa on Failure
       if: ${{ failure() }}
       run: |
         source ml-app/bin/activate
         cd zappa_app
-        zappa undeploy dev
+        zappa undeploy dev --yes
 #      env:
 #        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
 #        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
