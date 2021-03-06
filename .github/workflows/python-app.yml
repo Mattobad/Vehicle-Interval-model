@@ -41,6 +41,9 @@ jobs:
       run: |
         cd zappa_app
         pymake test
+    - name: Clean Old Deployment
+      run: |
+        zappa undeploy dev
     - name: Deploy to AWS dev
       if: github.ref == 'refs/heads/development' && job.status == 'success'
       run: |
@@ -53,7 +56,10 @@ jobs:
         env
         pip install -r requirements.txt zappa==0.52.0
         zappa deploy dev
-
+    - name: Tear Down Zappa on Failure
+      if: ${{ failure() }}
+      run: |
+        zappa undeploy dev
 #      env:
 #        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
 #        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
