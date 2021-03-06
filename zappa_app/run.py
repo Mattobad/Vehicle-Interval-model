@@ -3,5 +3,8 @@ from app.config import config
 
 application = create_app(config_object=config.DevelopmentConfig)
 
-if __name__ =='__main__':
+def run_app():
     application.run(host='0.0.0.0')
+
+if __name__ =='__main__':
+    run_app()
