@@ -13,8 +13,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./zappa_app
     steps:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -40,6 +38,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
+        cd zappa_app
         pymake test
     - name: Setup Virtual Env
       run: |
@@ -49,14 +48,17 @@ jobs:
         pip install -r requirements.txt zappa==0.52.0
     - name: Clean Old Deployment
       run: |
+        cd zappa_app
         zappa undeploy dev
     - name: Deploy to AWS dev
       if: github.ref == 'refs/heads/development' && job.status == 'success'
       run: |
+        cd zappa_app
         zappa deploy dev
     - name: Tear Down Zappa on Failure
       if: ${{ failure() }}
       run: |
+        cd zappa_app
         zappa undeploy dev
 #      env:
 #        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
