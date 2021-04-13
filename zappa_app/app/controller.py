@@ -51,7 +51,21 @@ def index():
 @prediction_app.route('/v1/model/predict',methods=['POST'])
 def predict():
     """
-    Function to predict the vehicle price based on user inputs.
+    ---
+    post:
+        description: predict the vehicle price based on user inputs
+        requestBody:
+            required: true
+            content:
+                application/json:
+                schema: json
+        
+        responses:
+            '200':
+                description: on success
+                content:
+                    application/json:
+                        schema: json
     """
     if request.method == 'POST':
         # extract post data from request body as JSON
@@ -65,14 +79,6 @@ def predict():
 
         # preprocess the data
         preds = model_prediction(df)
-        
-        # print(f'columns: {df.columns}', file=sys.stderr)
-        # print(type(df), file=sys.stderr)
-        
-        # print(f"New df: {df}",  file=sys.stderr)
-        # preds = loaded_model.predict(df[config.MODEL_FEATURES],single_data_point=True)
-        
-        # print(f'Predicted = {preds}')
 
         logger.info(f'models prediction time = {time.time() - start_time :.4f} secs')
 

@@ -1,6 +1,6 @@
 {
     "dev": {
-        "app_function": "run.run_app",
+        "app_function": "run.app",
         "aws_region": "us-east-1",
         "project_name": "zappa_app_dev",
         "runtime": "python3.8",
