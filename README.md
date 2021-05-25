@@ -33,6 +33,7 @@ $ pip install -r requirements.txt
 
 ### Directory Structure
   ``` .
+      .
       ├──.github/workflow
       │   └── python-app.yml  
       ├── zappa_app
@@ -52,9 +53,10 @@ $ pip install -r requirements.txt
       │   │   ├── test_controller.py
       │   │   └── test_inference.py
       │   ├── Makefile
+      │   ├── requirements.txt
       │   ├── run.py
-      │   └── .gitignore
-      ├── zappa_settings.json
+      │   └── zappa_settings.json
+      ├── .gitignore
       ├── README.md  
       └── requirements.txt
  ```
