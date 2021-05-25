@@ -6,15 +6,18 @@ name: Python application
 on:
   push:
     branches: [ main ]
-#   pull_request:
-#     branches: [ main ]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
     steps:
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
@@ -35,3 +38,27 @@ jobs:
       run: |
         cd zappa_app
         pymake test
+    - name: Setup Virtual Env
+      run: |
+        pip install virtualenv
+        virtualenv ml-app
+        source ml-app/bin/activate
+        pip install -r requirements.txt zappa==0.52.0
+    - name: Clean Old Deployment
+      run: |
+        source ml-app/bin/activate
+        cd zappa_app
+        zappa undeploy dev --yes           # change 'dev' to 'production' for deploying the model in production
+    - name: Deploy to AWS production
+      if: ${{ always() }}
+      run: |
+        source ml-app/bin/activate
+        cd zappa_app
+        zappa deploy dev
+    - name: Tear Down Zappa on Failure
+      if: ${{ failure() }}
+      run: |
+        source ml-app/bin/activate
+        cd zappa_app
+        zappa undeploy dev --yes
+
