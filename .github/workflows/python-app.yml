@@ -49,12 +49,12 @@ jobs:
     #     source ml-app/bin/activate
     #     cd zappa_app
     #     zappa undeploy dev --yes           
-    - name: Deploy to AWS production
+    - name: Deploy to AWS dev
       if: ${{ always() }}
       run: |
         source ml-app/bin/activate
         cd zappa_app
-        zappa deploy production
+        zappa deploy dev
     - name: Tear Down Zappa on Failure
       if: ${{ failure() }}
       run: |

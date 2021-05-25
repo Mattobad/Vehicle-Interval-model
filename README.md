@@ -82,7 +82,7 @@ If you would like to deploy the application from your location machine, Unix or 
 $ pip install zappa
 $ cd zappa_app
 $ zappa init   
-$ zappa deploy production
+$ zappa deploy dev
 
 ```
 
@@ -158,25 +158,25 @@ To run the CI/CD with GitHub Actions, you can simply choose python application t
       run: |
         source ml-app/bin/activate
         cd zappa_app
-        zappa undeploy production --yes
-    - name: Deploy to AWS production                           # Deploy fresh application
+        zappa undeploy dev --yes
+    - name: Deploy to AWS dev                           # Deploy fresh application
       if: ${{ always() }}
       run: |
         source ml-app/bin/activate
         cd zappa_app
-        zappa deploy production
+        zappa deploy dev
     - name: Tear Down Zappa on Failure                  # Tear Down incase of failure
       if: ${{ failure() }}
       run: |
         source ml-app/bin/activate
         cd zappa_app
-        zappa undeploy production --yes
+        zappa undeploy dev --yes
  ```
  
  Note: Reasons for cleaning the previous deployment for every new deployment:
 - Versioning doesn't play a role in the project as upgraded newer version always replaces the older applicaiton
 - Zappa doesn't have single command(at the time of writing) to undeploy and deploy the serverless application which is required for automating the deployment.
-  - you can only use `zappa update production` command if you've already deployed using `zappa deploy production` command.
+  - you can only use `zappa update dev` command if you've already deployed using `zappa deploy dev` command.
 
 You can also run the GitHub Actions locally using the act package. Check out the awesome package through this [link][act_package]. 
 
