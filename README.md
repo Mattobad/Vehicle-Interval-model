@@ -1,6 +1,6 @@
 # Project Overview: Vehicle-Interval-model
 
-This repo consists of the **Model deployment** in production stage of the [Full-Stack Data Science Project][link]. Deploying  Machine learning model as a RESTful Serverless API leveraging the power of AWS Serverless Architecture like AWS Lambda, EventBridge, and AWS APIGateway using [Zappa][zappa_link] (the python package used for deploying serverless applicaition).
+This repo consists of the **Model deployment** in development/test stage of the [Full-Stack Data Science Project][link]. Deploying  Machine learning model as a RESTful Serverless API leveraging the power of AWS Serverless Architecture like AWS Lambda, EventBridge, and AWS APIGateway using [Zappa][zappa_link] (the python package used for deploying serverless applicaition).
 
 Here, the main branch is used as the production branch while development branch for the development/test purpose.
 
@@ -81,7 +81,7 @@ If you would like to deploy the application from your location machine, Unix or 
 $ pip install zappa
 $ cd zappa_app
 $ zappa init   
-$ zappa deploy production
+$ zappa deploy dev
 
 ```
 
