@@ -10,4 +10,7 @@ local_test:
 dev:
     cd zappa_app
     zappa deploy dev
-    
+
+production:
+    cd zappa_app
+    zappa deploy production
