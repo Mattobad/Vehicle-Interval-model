@@ -44,17 +44,17 @@ jobs:
         virtualenv ml-app
         source ml-app/bin/activate
         pip install -r requirements.txt zappa==0.52.0
-    - name: Clean Old Deployment
-      run: |
-        source ml-app/bin/activate
-        cd zappa_app
-        zappa undeploy dev --yes           
+    # - name: Clean Old Deployment
+    #   run: |
+    #     source ml-app/bin/activate
+    #     cd zappa_app
+    #     zappa undeploy dev --yes           
     - name: Deploy to AWS production
       if: ${{ always() }}
       run: |
         source ml-app/bin/activate
         cd zappa_app
-        zappa deploy dev
+        zappa deploy production
     - name: Tear Down Zappa on Failure
       if: ${{ failure() }}
       run: |
