@@ -54,11 +54,11 @@ jobs:
       run: |
         source ml-app/bin/activate
         cd zappa_app
-        zappa deploy production
+        zappa deploy dev
     - name: Tear Down Zappa on Failure
       if: ${{ failure() }}
       run: |
         source ml-app/bin/activate
         cd zappa_app
-        zappa undeploy production --yes
+        zappa undeploy dev --yes
 
