@@ -1,7 +1,8 @@
 from app.app import create_app
 from app.config import config
 
-application = create_app(config_object=config.DevelopmentConfig)
+app = create_app(config_object=config.DevelopmentConfig)
+
 
 if __name__ =='__main__':
-    application.run(host='0.0.0.0')
+    app.run(host='0.0.0.0')
