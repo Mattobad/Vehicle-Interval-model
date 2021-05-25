@@ -1,0 +1,13 @@
+{
+    "dev": {
+        "app_function": "run.app",
+        "aws_region": "us-east-1",
+        "project_name": "zappa_app_dev",
+        "runtime": "python3.8",
+        "keep_warm": false,
+        "memory_size":512,
+        "slim_handler": true,
+        "timeout_seconds":600,
+        "s3_bucket": "stm-zappa-app"
+    }
+}
