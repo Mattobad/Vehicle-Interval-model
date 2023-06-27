@@ -145,7 +145,7 @@ To run the CI/CD with GitHub Actions, you can simply choose python application t
         cd zappa_app
         pymake test
  ```
- 
+
  7. Zappa deployment
  ```
  - name: Setup Virtual Env                             # setup virtualenv 
@@ -182,6 +182,7 @@ You can also run the GitHub Actions locally using the act package. Check out the
 
 
 Check-out the Serverless application, live through this [link][project].
+
 
 [zappa_link]: https://pypi.org/project/zappa/
 [act_package]: https://github.com/nektos/act
